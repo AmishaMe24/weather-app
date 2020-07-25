@@ -1,0 +1,35 @@
+<header>
+  <a   class ="col-sm-10"href="#" >Weather Channel</a>
+  <div class= "container col-sm-3" >
+    <input id='search-btn' type='checkbox'/>
+    <label for='search-btn'>Show search bar</label>
+    <input id='search-bar' type='text' placeholder='Enter location'
+    #location (keyup.enter)= "searchweather(location.value)"/>
+  </div>
+</header>
+
+
+<div class="divWeatherMain" [ngClass]= "setclass()">
+<div class ="box">
+  <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+    <fa-icon [icon]="faSun" class="sun" size="5x"></fa-icon>
+  </div>   
+  <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+    <fa-icon [icon]="faMoon" class="moon" size="5x"></fa-icon>  
+  </div>   
+  <div class="weatherWidgetRow cloudDiv">
+    <fa-icon [icon]="faCloud" class="cloud" size="4x"></fa-icon>
+  </div>
+<div class="weatherWidgetRow" style="font-size: 42px;margin-top: 5px;">{{WeatherData.temp_celsius}}°</div>
+<div class="weatherWidgetRow" style="font-size: 22px;">{{WeatherData.temp_min}}° / {{WeatherData.temp_max}}°</div>
+<div class="weatherWidgetRow" style="font-size: 22px;">Feels Like: {{WeatherData.temp_feels_like}}°</div>
+<div class="weatherWidgetRow" style="font-size: 35px;margin-top: 10px;">{{WeatherData.name}}</div>
+<div class="weatherWidgetRow" style="font-size: 22px;">Humidity: {{WeatherData.main.humidity}}%</div>
+</div>
+</div>
+
+
+
+
+
+<router-outlet></router-outlet>
